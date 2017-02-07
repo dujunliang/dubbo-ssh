@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+
+<struts>
+        <!--<constant name="struts.action.excludePattern" value="/static/.*?" />&lt;!&ndash; default locale &ndash;&gt;-->
+
+        <include file="struts-default.xml"></include>
+
+        <package name="default" extends="struts-default" namespace="/" >
+
+                <interceptors>
+
+                        <interceptor name="authuserInterceptor" class="com.gov.sys.interceptor.LoginInterceptor"/>
+                        <interceptor-stack name="myStack">
+
+                                <interceptor-ref name="authuserInterceptor"></interceptor-ref>
+
+                                <interceptor-ref name="defaultStack"></interceptor-ref>
+
+
+                        </interceptor-stack>
+
+
+
+                </interceptors>
+
+                <default-interceptor-ref name="myStack" />
+
+                <global-results>
+
+                        <result name="logout">/WEB-INF/meAdmin/login.jsp</result>
+                        <result name="error" > 404 </result>
+
+                </global-results>
+                <action name="*_*" class="{1}Action" method="{2}">
+                        <result>/WEB-INF/meAdmin/{2}.jsp</result>
+                </action>
+
+        </package>
+
+        <!--<include file="struts-common.xml" />-->
+
+</struts>

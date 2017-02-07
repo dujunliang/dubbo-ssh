@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_sys-common-parent" default="compile.module.sys-common-parent">
+  <dirname property="module.sys-common-parent.basedir" file="${ant.file.module_sys-common-parent}"/>
+  
+  <property name="module.jdk.home.sys-common-parent" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.sys-common-parent" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.sys-common-parent" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.sys-common-parent" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="sys-common-parent.output.dir" value="${module.sys-common-parent.basedir}/target/classes"/>
+  <property name="sys-common-parent.testoutput.dir" value="${module.sys-common-parent.basedir}/target/test-classes"/>
+  
+  <path id="sys-common-parent.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="sys-common-parent.module.production.classpath">
+    <path refid="${module.jdk.classpath.sys-common-parent}"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.12.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_log4j:apache-log4j-extras:1.2.17.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.4.1.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.31.classpath"/>
+  </path>
+  
+  <path id="sys-common-parent.runtime.production.module.classpath">
+    <pathelement location="${sys-common-parent.output.dir}"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.12.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_log4j:apache-log4j-extras:1.2.17.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.4.1.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.31.classpath"/>
+  </path>
+  
+  <path id="sys-common-parent.module.classpath">
+    <path refid="${module.jdk.classpath.sys-common-parent}"/>
+    <pathelement location="${sys-common-parent.output.dir}"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.6.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.12.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_log4j:apache-log4j-extras:1.2.17.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.4.1.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.31.classpath"/>
+  </path>
+  
+  <path id="sys-common-parent.runtime.module.classpath">
+    <pathelement location="${sys-common-parent.testoutput.dir}"/>
+    <pathelement location="${sys-common-parent.output.dir}"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.6.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.12.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.12.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_log4j:apache-log4j-extras:1.2.17.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.4.1.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.31.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.sys-common-parent">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.sys-common-parent">
+    <patternset refid="excluded.from.module.sys-common-parent"/>
+  </patternset>
+  
+  <path id="sys-common-parent.module.sourcepath">
+    <dirset dir="${module.sys-common-parent.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="sys-common-parent.module.test.sourcepath">
+    <dirset dir="${module.sys-common-parent.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.sys-common-parent" depends="compile.module.sys-common-parent.production,compile.module.sys-common-parent.tests" description="Compile module sys-common-parent"/>
+  
+  <target name="compile.module.sys-common-parent.production" depends="register.custom.compilers" description="Compile module sys-common-parent; production classes">
+    <mkdir dir="${sys-common-parent.output.dir}"/>
+    <javac2 destdir="${sys-common-parent.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sys-common-parent}/javac">
+      <compilerarg line="${compiler.args.sys-common-parent}"/>
+      <bootclasspath refid="sys-common-parent.module.bootclasspath"/>
+      <classpath refid="sys-common-parent.module.production.classpath"/>
+      <src refid="sys-common-parent.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sys-common-parent"/>
+    </javac2>
+    
+    <copy todir="${sys-common-parent.output.dir}">
+      <fileset dir="${module.sys-common-parent.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.sys-common-parent.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.sys-common-parent.tests" depends="register.custom.compilers,compile.module.sys-common-parent.production" description="compile module sys-common-parent; test classes" unless="skip.tests">
+    <mkdir dir="${sys-common-parent.testoutput.dir}"/>
+    <javac2 destdir="${sys-common-parent.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sys-common-parent}/javac">
+      <compilerarg line="${compiler.args.sys-common-parent}"/>
+      <bootclasspath refid="sys-common-parent.module.bootclasspath"/>
+      <classpath refid="sys-common-parent.module.classpath"/>
+      <src refid="sys-common-parent.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sys-common-parent"/>
+    </javac2>
+    
+    <copy todir="${sys-common-parent.testoutput.dir}">
+      <fileset dir="${module.sys-common-parent.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.sys-common-parent" description="cleanup module">
+    <delete dir="${sys-common-parent.output.dir}"/>
+    <delete dir="${sys-common-parent.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+
+    <display-name>sys-dubbo-web</display-name>
+    <description>Web Framework</description>
+
+
+    <!-- Logger -->
+    <listener>
+        <listener-class>com.alibaba.citrus.logconfig.LogConfiguratorListener</listener-class>
+    </listener>
+
+    <!--spring 配置-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- 当spring applicationContext.xml没有放在src目录下可以通过classpath进行配置 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-config.xml,classpath:consumer.xml</param-value>
+    </context-param>
+
+    <!--&lt;!&ndash; struts2 web配置 &ndash;&gt;-->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <init-param>
+            <param-name>struts.action.excludePattern</param-name>
+            <param-value>(/ws/){1}\S*$</param-value>
+        </init-param>
+    </filter>
+
+    <!-- 配置Filter拦截的URL -->
+    <filter-mapping>
+        <!-- 配置Struts2的核心FilterDispatcher拦截所有用户请求 -->
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 检查用户是否登陆拦截器 -->
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.gov.sys.struts.interceptor.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>ConsumerInit</servlet-name>-->
+        <!--<servlet-class>com.gov.sys.dubboconsumer.ConsumerInit</servlet-class>-->
+        <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
+    <!--&lt;!&ndash; 配置Filter拦截的URL &ndash;&gt;-->
+    <!--<servlet-mapping>-->
+        <!--&lt;!&ndash; 配置Struts2的核心FilterDispatcher拦截所有用户请求 &ndash;&gt;-->
+        <!--<servlet-name>ConsumerInit</servlet-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+    <welcome-file-list>
+        <welcome-file>/meAdmin/index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/meAdmin/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/meAdmin/404.jsp</location>
+    </error-page>
+
+
+
+
+</web-app>

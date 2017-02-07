@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../dubbo-master/dubbo-admin/dubbo-admin.iml" filepath="$PROJECT_DIR$/../../dubbo-master/dubbo-admin/dubbo-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-common/sys-common.iml" filepath="$PROJECT_DIR$/sys-common/sys-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-common-parent/sys-common-parent.iml" filepath="$PROJECT_DIR$/sys-common-parent/sys-common-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-common-web/sys-common-web.iml" filepath="$PROJECT_DIR$/sys-common-web/sys-common-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-dubbo-api/sys-dubbo-api.iml" filepath="$PROJECT_DIR$/sys-dubbo-api/sys-dubbo-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-dubbo-core/sys-dubbo-core.iml" filepath="$PROJECT_DIR$/sys-dubbo-core/sys-dubbo-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-dubbo-parent/sys-dubbo-parent.iml" filepath="$PROJECT_DIR$/sys-dubbo-parent/sys-dubbo-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-dubbo-web/sys-dubbo-web.iml" filepath="$PROJECT_DIR$/sys-dubbo-web/sys-dubbo-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sys-parent.iml" filepath="$PROJECT_DIR$/sys-parent.iml" />
+    </modules>
+  </component>
+</project>

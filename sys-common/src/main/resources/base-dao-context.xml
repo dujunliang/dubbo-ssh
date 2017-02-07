@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/jee 
+        http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<import resource="classpath:datasource.xml" />
+
+    <!-- enable component scanning -->
+    <context:component-scan base-package="com.gov.sys" />
+
+
+
+	<!-- define the EntityManagerFactory -->
+	<bean id="vssEMF" parent="baseEntityManagerFactory">
+		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/vss-persistence.xml" />
+		<property name="persistenceUnitName" value="vss-core" /> -->
+		<property name="packagesToScan" value="com.gov.sys" />
+		<property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">NONE</prop> 
+                <prop key="javax.persistence.validation.mode">NONE</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.connection.autocommit">false</prop>
+                <prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
+                <prop key="hibernate.ejb.event.post-insert">mo.gov.dsat.audit.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.post-update">mo.gov.dsat.audit.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.post-delete">mo.gov.dsat.audit.AuditEventListener</prop>
+            </props>
+        </property>
+	</bean>
+
+	<!-- transactionManager -->
+	<bean id="vssTM" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="vssEMF" />
+	</bean>
+	<!-- @Transactional Support -->
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="vssTM" />
+        
+    <!-- AspectJ Annotation Support -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    
+    <bean id="mapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
+        <property name="mappingFiles" value="classpath*:**/*-dozer-mapping.xml" />
+    </bean>
+    
+    <bean id="beanMapper" class="com.gov.sys.util.BeanMapper">
+        <constructor-arg type="org.dozer.Mapper" ref="mapper" />
+    </bean>
+
+
+</beans>
